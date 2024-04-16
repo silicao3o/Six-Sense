@@ -20,11 +20,21 @@ window.addEventListener('wheel', (e) => {
     wrap.style.top = page * -100 + 'vh';
 }, { passive: false }); // 스크롤 기능 제거
 
-const topbtn = document.querySelector("topbtn");
-topbtn.addEventListener("click", function () {
-    ('body,html').animate({ scrollTop: 0 }, 500);
-    return false
-});
+$(document).ready(function () {
+    $('#topbtn').click(function () {
+        firstPage = document.getElementsByClassName('Scrollpage')[0];
+        wrap.style.top = firstPage.style.top
+    })
+})
+
+
+
+
+
+
+
+
+// 기존에 오류가났던함수  비교해볼것
 //         return false;
 // $(document).ready(function () {
 //     $('#topbtn').click(function () {
