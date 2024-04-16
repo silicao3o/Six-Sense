@@ -3,8 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6 tingle web page</title>
+    <title>6TINGLE Web Page</title>
     <style>
+      .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-fit: cover;
+      }
+
       body {
         margin: 0;
         padding: 0;
@@ -12,13 +22,15 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        position: relative;
       }
 
       .circle-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 150px;
       }
 
       .circle-row {
@@ -27,25 +39,83 @@
       }
 
       .circle {
-        width: 50px;
-        height: 50px;
-        background-color: #ffcc00;
-        border-radius: 50%;
         margin: 5px;
+      }
+
+      .project-logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 150px;
+        height: auto;
       }
     </style>
   </head>
   <body>
+    <img
+      class="background-image"
+      src="file:///C:/6Tingle/사진/Wallpaper.png"
+      alt="Background Image"
+    />
+
+    <img
+      class="project-logo"
+      src="C:\6Tingle\사진\projectlogo.png"
+      alt="Project Logo"
+    />
+
     <div class="circle-container">
-      <div class="circle"></div>
-      <div class="circle-row">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
+      <div class="circle">
+        <img
+          src="file:///C:/6Tingle/사진/11zon_cropped (1).png"
+          alt="Image 1"
+          width="200"
+          height="200"
+        />
       </div>
       <div class="circle-row">
-        <div class="circle"></div>
-        <div class="circle"></div>
+        <div class="circle">
+          <img
+            src="file:///C:/6Tingle/사진/11zon_cropped (2).png"
+            alt="Image 2"
+            width="200"
+            height="200"
+          />
+        </div>
+        <div class="circle">
+          <img
+            src="file:///C:/6Tingle/사진/logo.png"
+            alt="Image 3"
+            width="200"
+            height="200"
+          />
+        </div>
+        <div class="circle">
+          <img
+            src="file:///C:/6Tingle/사진/11zon_cropped (3).png"
+            alt="Image 4"
+            width="200"
+            height="200"
+          />
+        </div>
+      </div>
+      <div class="circle-row">
+        <div class="circle">
+          <img
+            src="C:\6Tingle\사진\11zon.png"
+            alt="Image 5"
+            width="200"
+            height="200"
+          />
+        </div>
+        <div class="circle">
+          <img
+            src="file:///C:/6Tingle/사진/11zon_cropped.png"
+            alt="Image 5"
+            width="200"
+            height="200"
+          />
+        </div>
       </div>
     </div>
   </body>
