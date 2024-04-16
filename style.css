@@ -8,7 +8,6 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 15rem;
 }
 
 .wrap {
@@ -21,6 +20,7 @@ body {
 }
 
 .Scrollpage {
+    font-size: 10rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -56,11 +56,13 @@ body {
 }
 
 .topbtn{
-    width: 100px;
-    height: 100px;
+    height: 70px;
+    width: 70px;
     position: fixed;
     bottom: 50px;
     right: 100px;
-    z-index: 999;
     cursor: pointer
+}
+.topbtnim{
+
 }
