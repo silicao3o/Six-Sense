@@ -20,11 +20,16 @@ window.addEventListener('wheel', (e) => {
     wrap.style.top = page * -100 + 'vh';
 }, { passive: false }); // 스크롤 기능 제거
 
-
-$(document).ready(function () {
-    $('#topbtn').click(function () {
-        $('body,html').animate({scrollTop: 0 }, 500);
-        return false;
-    })
-})
+const topbtn = document.querySelector("topbtn");
+topbtn.addEventListener("click", function () {
+    ('body,html').animate({ scrollTop: 0 }, 500);
+    return false
+});
+//         return false;
+// $(document).ready(function () {
+//     $('#topbtn').click(function () {
+//         $('body,html').animate({scrollTop: 0 }, 500);
+//         return false;
+//     })
+// })
 
