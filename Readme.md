@@ -11,5 +11,5 @@
 |![ga-eun](https://github.com/silicao3o/Six-Sense/assets/70842040/efa019da-646d-45fa-b0b5-7d808a81ad51)|https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg|
 |![sang-heon](https://github.com/silicao3o/Six-Sense/assets/70842040/c2ba658a-a89d-4c12-a486-ed899c91d75c)|https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg|
 |![si-young](https://github.com/silicao3o/Six-Sense/assets/70842040/d80e16ca-7bc6-4333-9db6-f775dcd7bf5c)|https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg|
-|![woo-jin](https://github.com/silicao3o/Six-Sense/assets/70842040/218c6195-b2bb-4fd3-8ee8-bea758aff986)|https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.jpg|
+|![woo-jin](https://github.com/silicao3o/Six-Sense/assets/70842040/218c6195-b2bb-4fd3-8ee8-bea758aff986)|https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png|
 |![woo-seok](https://github.com/silicao3o/Six-Sense/assets/70842040/cfa592d1-bdd0-4ec0-bf68-81bd6ae0f2c6)|https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg|
