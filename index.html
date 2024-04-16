@@ -18,6 +18,7 @@
         height: 100%;
         z-index: -1;
         object-fit: cover;
+        opacity: 0.7;
       }
 
       body {
@@ -39,10 +40,10 @@
       }
 
       .circle-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 150px;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       margin-top: 150px;
       }
 
       .circle-row {
@@ -51,9 +52,16 @@
       }
 
       .circle {
-        margin: 50px;
+       margin:  50px;
       }
 
+      /*
+      .circle:nth-child(1) img,
+      .circle:nth-child(3) img {
+        margin-top: 100px;
+      }
+      */
+      
       .project-logo {
         position: absolute;
         top: 20px;
@@ -97,7 +105,7 @@
     <div class="content">
       <div class="circle-container">
         <div class="circle">
-          <a href="#section2"> <!--타겟으로 이동-->
+          <a href="#section2">
             <img
               src="file:///C:/6Tingle/사진/11zon_cropped (1).png"
               alt="Image 1"
@@ -119,8 +127,8 @@
             <img
               src="file:///C:/6Tingle/사진/logo.png"
               alt="Image 3"
-              width="200"
-              height="200"
+              width="300"
+              height="300"
             />
           </div>
           <div class="circle">
@@ -151,6 +159,7 @@
           </div>
         </div>
       </div>
+      
     </div>
 
     <div id="section2"> <!-- 여기에 팀, 팀원 소개 아이디 지정하기-->
@@ -161,7 +170,7 @@
         >Copyright @2024 SixSense. All rights reserved</span
       ><br />
       <span>소속 : 내일배움캠프 spring 트랙 B6조 </span>
-      <span>팀 멤버 :이시영, 김가은, 이상헌, 김우진, 김우 </span>
+      <span>팀 멤버 : 이시영, 김가은, 이상헌, 김우진, 김우 </span>
       <span>이메일 : SixthSense6@gmail.com </span>
     </div>
   </body>
