@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>6TINGLE Web Page</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-image: linear-gradient(to bottom, #514B4B, #F74A4B);
+      position: relative;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 130px;
+    }
+
+    .circle-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .circle {
+      margin: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .project-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 150px;
+      height: auto;
+    }
+
+    .footer {
+      background-color: #282828;
+      padding: 40px;
+      text-align: left;
+      color: white;
+      width: 100%;
+    }
+
+    .footer span {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    @font-face {
+      font-family: 'Happiness-Sans-Title';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .section {
+      height: 100vh;
+      width: 100vw;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /*팀원 사진 및 팀원 소개란*/
+    .box {
+      width: calc(100vw - 400px);
+      height: calc(100vh - 300px);
+      background-color: white;
+      display: flex;
+      align-items: center;
+      color: black;
+      gap: 50px;
+      box-shadow: 5px 5px 5px 5px black;
+    }
+
+    /*팀원 사진공간*/
+    .profile_pi {
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: 150px;
+      margin-right: 150px;
+      width: 600px;
+      height: 400px;
+    }
+
+    .profile_pi img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .profile_info {
+      font-family: Happiness-Sans-Title;
+      margin-top: 100px;
+      margin-bottom: 100px;
+      margin-left: 100px;
+      margin-right: 100px;
+      width: 600px;
+      height: 400px;
+    }
+
+    .name {
+      text-align: center;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .info {
+      /*큰사각형 색상*/
+      background-color: #f5f5f5;
+      background-size: cover;
+      height: 600px;
+      margin: 50px 200px 50px 200px;
+    }
+
+    .toggle-container {
+      margin-top: 2%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: transparent;
+    }
+
+    .infocontent {
+      font-size: 30px;
+      display: none;
+      width: calc(70% - 10px);
+      height: 150px;
+      margin: 5px;
+      padding: 20px 40px 20px 40px;
+      /*내용 박스 색상*/
+      background-color: #de4848;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: left;
+      left: 0;
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .triangle-button {
+      margin: 5px;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      background-color: transparent;
+    }
+
+    .triangle-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 10px 0 10px;
+      border-color: black transparent transparent transparent;
+    }
+
+    span {
+      margin-right: 50px;
+      font-size: 30px;
+    }
+
+    .img-container {
+      margin-top: 2%;
+      position: relative;
+      display: inline-block;
+    }
+  </style>
+  <script type="module">
+    // 토글
+    $(document).ready(function () {
+      $('.triangle-button').click(function () {
+        var index = $(this).index('.triangle-button');
+        $('.infocontent').not(':eq(' + index + ')').slideUp();
+        $('.infocontent').eq(index).slideToggle();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <img class="project-logo" src="https://raw.githubusercontent.com/j0462/Web/main/image/projectlogo.png"
+    alt="Project Logo" />
+
+  <div class="content">
+    <div class="circle-container">
+      <div class="circle">
+        <a href="#section2">
+          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/siyoung.png" alt="Image 1(시영)" width="200"
+            height="200" />
+        </a>
+      </div>
+      <div class="circle-row">
+        <div class="circle">
+          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/gaeun.png" alt="Image 2(가은)" width="200"
+            height="200" />
+        </div>
+        <div class="circle">
+          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/logo.png" alt="Image 3 (팀 로고)" width="300"
+            height="300" />
+        </div>
+        <div class="circle">
+          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woojin.png" alt="Image 4 (우진)" width="200"
+            height="200" />
+        </div>
+      </div>
+      <div class="circle-row">
+        <div class="circle">
+          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/wooseok.png" alt="Image 5 (우석)" width="200"
+            height="200" />
+        </div>
+        <div class="circle">
+          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sangheon.png" alt="Image 6 (상헌)" width="200"
+            height="200" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info">
+    <header>
+      <div class="img-container">
+        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/teamlogo.png" width="40%">
+      </div>
+    </header>
+    <main>
+      <div class="toggle-container">
+        <div>
+          <span><button class="triangle-button"></button>팀명 의미</span>
+          <span><button class="triangle-button"></button>팀 목표</span>
+          <span><button class="triangle-button"></button>팀 특징</span>
+          <span><button class="triangle-button"></button>팀내 약속</span>
+        </div>
+        <div class="infocontent">5명의 팀원 + 1개의 팀 합쳐서 6</div> <!-- 내용들 -->
+        <div class="infocontent">목표 내용</div>
+        <div class="infocontent">특징 내용</div>
+        <div class="infocontent">약속 내용</div>
+      </div>
+    </main>
+  </div>
+
+  <div class="section">
+    <div class="box">
+      <div class="profile_pi">
+        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg" alt="">
+      </div>
+      <div class="profile_info">
+        <h1 class="name">이시영</h1>
+        <h3>생년월일 : 1998년 08월 04일</h3>
+        <h3>MBTI : ENFP</h3>
+        <h3>취미 : 게임, 헬스, 사진 찍기, 스냅 촬영</h3>
+        <h3>장점 : 하고자 하는 것이 있으면 끝까지 합니다.</h3>
+        <h3>협업 스타일 : 팀원들 간의 의견 조율을 중요시 합니다. </h3>
+        <h3>블로그 주소 : <a href="https://velog.io/@silica_o3o/posts" target="_blank">velog.io/@silica_o3o/posts</a> </h3>
+        <h3>TMI : 오버워치 전 프로게임팀 코치 출신</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="box">
+      <div class="profile_info">
+        <h1 class="name">김가은</h1>
+        <h3>생년월일 : 2002년 07월 06일</h3>
+        <h3>MBTI : INFJ</h3>
+        <h3>취미 : 독서, 웹툰, 음악 감상, 홈 프로텍트</h3>
+        <h3>장점 : 책임감이 강함</h3>
+        <h3>협업 스타일 : 버스타는 팀원이 없도록 모두와 함께 합니다~!</h3>
+        <h3>블로그 주소 : <a href="https://velog.io/@litlight/posts" target="_blank">velog.io/@litlight/posts</a> </h3>
+        <h3>TMI : 귀엽고 깜찍한 강아지와 함께 지낸답니다🐶</h3>
+      </div>
+      <div class="profile_pi">
+        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="box">
+      <div class="profile_pi">
+        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png" alt="">
+      </div>
+      <div class="profile_info">
+        <h1 class="name">김우진</h1>
+        <h3>생년월일 : 2000년 06월 05일</h3>
+        <h3>MBTI : ISFP</h3>
+        <h3>취미 : 헬스, 뷰티, 패션 인스타그램</h3>
+        <h3>장점 : 긍정형 인간</h3>
+        <h3>협업 스타일 : 아이디어도 많이 내고 의견수렴도 잘해요!</h3>
+        <h3>블로그 주소 : <a href="kwj-study.tistory.com/posts" target="_blank">kwj-study.tistory.com/posts</a> </h3>
+        <h3>TMI : 패션 인플루언서 활동 중</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="box">
+      <div class="profile_info">
+        <h1 class="name">김우석</h1>
+        <h3>생년월일 : 1997년 01월 21일</h3>
+        <h3>MBTI : ESFJ</h3>
+        <h3>취미 : 음악 감상, 영화 시청, 드라이브</h3>
+        <h3>장점 : 맡은 업무에 최선을 다합니다!</h3>
+        <h3>협업 스타일 : 방향이 정해진 일에 묵묵하게 서포트 하면서 나아가려고 합니다.</h3>
+        <h3>블로그 주소 : <a href="https://velog.io/@kkx152/posts" target="_blank">velog.io/@kkx152/posts</a></h3>
+        <h3>TMI : 모터스포츠에 관심이 많은편입니다 😃</h3>
+      </div>
+      <div class="profile_pi">
+        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="box">
+      <div class="profile_pi">
+        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg" alt="">
+      </div>
+      <div class="profile_info">
+        <h1 class="name">이상헌</h1>
+        <h3>생년월일 : 2001년 01월 01일</h3>
+        <h3>MBTI : ISTP</h3>
+        <h3>취미 : 게임 플레이 및 분석, 유튜브 시청</h3>
+        <h3>장점 : 다양한 관점으로 생각하여 보다 나은 결과를 만들어낸다.</h3>
+        <h3>협업 스타일 : 의지만 있다면 옆에서 도와주는 것을 좋아합니다.</h3>
+        <h3>블로그 주소 : <a href="https://velog.io/@jakehun/posts" target="_blank">velog.io/@jakehun/posts</a></h3>
+        <h3>TMI : 구글에 게임 출시한 경험 有</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span style="font-size: larger; font-weight: bold">Copyright @2024 SixSense. All rights reserved</span><br />
+    <span>소속 : 내일배움캠프 spring 트랙 B6조 </span>
+    <span>팀 멤버 : 이시영, 김가은, 이상헌, 김우진, 김우석 </span>
+    <span>이메일 : SixthSense6@gmail.com </span>
+  </div>
+</body>
+
+</html>
