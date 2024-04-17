@@ -16,7 +16,7 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      min-height: 30vh;
       background-image: linear-gradient(to bottom, #514b4b, #f74a4b);
       position: relative;
     }
@@ -50,11 +50,11 @@
       justify-content: center;
     }
 
-      .project-logo {
+    .project-logo {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 150px;
+      top: 1.85vh;
+      left: 1.04vw;
+      width: 21.81vw;
       height: auto;
     }
 
@@ -64,8 +64,7 @@
       text-align: left;
       color: white;
       width: 100%;
-      height: 100vh;
-    }
+        }
 
     .footer span {
       display: block;
@@ -126,13 +125,15 @@
     }
 
     .profile_info {
+      justify-content:center;
+      align-items: center;
       font-family: Happiness-Sans-Title;
       margin-top: 0.2962vh;
       margin-bottom: 0.2962vh;
-      margin-left: 20.208vh;
-      margin-right: 20.208vh;
+      margin-left: 7.8125vw;
+      margin-right: 7.8125vw;
       width: 31.25vw;
-      height: 68.2222vh;
+      height: 55.03vh;
     }
 
     .name {
@@ -367,7 +368,6 @@
       justify-content: center;
       align-items: center;
     }
-
   </style>
   <script type="module">
     // Firebase SDK 라이브러리 가져오기
@@ -621,7 +621,7 @@
     const wrap = document.getElementsByClassName('wrap')[0]; // 보이는 영역
     const Scrollpage = document.getElementsByClassName('Scrollpage');
     let page = 0;
-    const lastPage = Scrollpage.length -1 ;// 마지막 페이지
+    const lastPage = Scrollpage.length ;// 마지막 페이지
 
     window.addEventListener('wheel', (e) => {
       e.preventDefault();
@@ -638,37 +638,37 @@
       }
       console.log(e.deltaY)
       wrap.style.top = page * -100 + 'vh';
-    }, { passive: false }); // 스크롤 기능 제거
+    }, { passive: true }); // 스크롤 기능 제거
 
     $('.topbtn').click(async function () {
-      $('html, body').animate({scrollTop:0}, 600)
-        return false;
+      $('html, body').animate({ scrollTop: 0 }, 600)
+      return false;
     })
 
-      $('#iinkinfo1').click(function () {
-        $('html, body').animate({scrollTop:1750}, 600)
-        return false;
+    $('#iinkinfo1').click(function () {
+      $('html, body').animate({ scrollTop: 1750 }, 600)
+      return false;
     })
 
     $('#iinkinfo2').click(function () {
-        $('html, body').animate({scrollTop:2650}, 600)
-        return false;
+      $('html, body').animate({ scrollTop: 2650 }, 600)
+      return false;
     })
     $('#iinkinfo3').click(function () {
-        $('html, body').animate({scrollTop:950}, 600)
-        return false;
+      $('html, body').animate({ scrollTop: 950 }, 600)
+      return false;
     })
     $('#iinkinfo4').click(function () {
-        $('html, body').animate({scrollTop:3500}, 600)
-        return false;
+      $('html, body').animate({ scrollTop: 3500 }, 600)
+      return false;
     })
     $('#iinkinfo5').click(function () {
-        $('html, body').animate({scrollTop:4350}, 600)
-        return false;
+      $('html, body').animate({ scrollTop: 4350 }, 600)
+      return false;
     })
     $('#iinkinfo6').click(function () {
-        $('html, body').animate({scrollTop:5250}, 600)
-        return false;
+      $('html, body').animate({ scrollTop: 5250 }, 600)
+      return false;
     })
   </script>
 </head>
@@ -680,37 +680,37 @@
         alt="Project Logo" />
       <div class="content">
         <div class="circle-container">
-          <div class="circle" >
-              <img  src="https://raw.githubusercontent.com/j0462/Web/main/image/siyoung.png" id="iinkinfo1" alt="Image 1(시영)"
-                width="150" height="150" />
+          <div class="circle">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/siyoung.png" id="iinkinfo1"
+              alt="Image 1(시영)" width="150" height="150" />
             </a>
           </div>
           <div class="circle-row">
             <div class="circle">
-                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/gaeun.png"  id="iinkinfo2" alt="Image 2(가은)"
-                  width="150" height="150" />
+              <img src="https://raw.githubusercontent.com/j0462/Web/main/image/gaeun.png" id="iinkinfo2"
+                alt="Image 2(가은)" width="150" height="150" />
               </a>
             </div>
             <div class="circle">
-                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/logo.png" id="iinkinfo3" alt="Image 3 (팀 로고)"
-                  width="250" height="250" /></a>
+              <img src="https://raw.githubusercontent.com/j0462/Web/main/image/logo.png" id="iinkinfo3"
+                alt="Image 3 (팀 로고)" width="250" height="250" /></a>
             </div>
             <div class="circle">
-                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woojin.png" id="iinkinfo4" alt="Image 4 (우진)"
-                  width="150" height="150" /></a>
+              <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woojin.png" id="iinkinfo4"
+                alt="Image 4 (우진)" width="150" height="150" /></a>
             </div>
           </div>
           <div class="circle-row">
             <div class="circle">
-              
-                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/wooseok.png" id="iinkinfo5" alt="Image 5 (우석)"
-                  width="150" height="150" />
+
+              <img src="https://raw.githubusercontent.com/j0462/Web/main/image/wooseok.png" id="iinkinfo5"
+                alt="Image 5 (우석)" width="150" height="150" />
               </a>
             </div>
             <div class="circle">
-        
-                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sangheon.png" id="iinkinfo6" alt="Image 6 (상헌)"
-                  width="150" height="150" />
+
+              <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sangheon.png" id="iinkinfo6"
+                alt="Image 6 (상헌)" width="150" height="150" />
               </a>
             </div>
           </div>
@@ -747,7 +747,7 @@
       <div class="section" id="siyoung">
         <div class="box">
           <div class="profile_pi">
-            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg"  alt="" />
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg" alt="" />
             <button id="comment_btn3" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
           </div>
           <div class="profile_info">
@@ -826,10 +826,8 @@
                 <div class="commentBox">
                   <ul class="comment">
                     <li id="commentText2" class="commentText">
-
                     </li>
                   </ul>
-
                   <div class="commentContainer">
                     <form class="commentWrap">
                       <div class="inputBox">
@@ -1017,10 +1015,12 @@
       </div>
     </div>
     <div class="footer">
-      <span style="font-size: larger; font-weight: bold">Copyright @2024 SixSense. All rights reserved</span><br />
-      <span style="font-size: medium";>소속 : 내일배움캠프 spring 트랙 B6조 </span>
-      <span style="font-size: medium";>팀 멤버 : 이시영, 김가은, 이상헌, 김우진, 김우석 </span>
-      <span style="font-size: medium";>이메일 : SixthSense6@gmail.com </span>
+      <div class="Scrollpage">
+        <span style="font-size: larger; font-weight: bold">Copyright @2024 SixSense. All rights reserved</span><br />
+        <span>소속 : 내일배움캠프 spring 트랙 B6조 </span>
+        <span>팀 멤버 : 이시영, 김가은, 이상헌, 김우진, 김우석 </span>
+        <span>이메일 : SixthSense6@gmail.com </span>
+      </div>
     </div>
 
     <button type="button" class="topbtn" id="topbtn">
