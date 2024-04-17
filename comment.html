@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>댓글 기능 구현</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="../favicon/money.ico" type="image/x-icon" sizes="16x16">
+    <style>
+        /*폰트 가져오기*/
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+        * {
+            font-family: "Jua", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /*화면 그라데이션 
+        body {
+            background-image: linear-gradient(to bottom, #514b4b ,#F74A4B);
+            height: 400px;
+        }   */
+
+        /*댓글 보기 버튼*/
+        .comment_btn {
+            margin: 100px 0px 100px 100px;
+        }
+
+        .commentBBox {
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            width: 800px;
+            margin: 0px auto 0px auto;
+            display: flex;
+
+        }
+
+        .profilePicture {
+            width: 300px;
+ /*           height: 375px;    */
+            object-fit: cover;
+        }
+
+        .commentBox {
+            margin-left: 100px;
+            width: 500px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        .commentNameBold {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .commentContainer {
+            padding: 10px;
+        }
+
+        .commentWrap {
+            display: flex;
+            justify-content: space-between;
+            height: 30px;
+        }
+
+        .userName {
+            width: 80px;
+        }
+
+        .commentBtn {
+            color: blue;
+            border: none;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .closeBtn {
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 25%;
+            left: 70%;
+            right: 0;
+            bottom: 0;
+            margin: 0px 0px 0px auto;
+            float: right;
+        }
+
+        .closeBtn>button {
+            display: inline-block;
+            display: inline;
+            font-weight: 1000;
+            border: none;
+            background-color: rgba(0, 0, 0, 0);
+
+        }
+
+        .closeBtn>button:after {
+            display: inline-block;
+            content: "\00d7";
+            font-size: 20pt;
+        }
+
+        .commentContinerBox {
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(118, 127, 134, 0.2);
+            padding: 100px 0px 100px 0px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .commentText {
+            margin-top: 40px;
+        }
+
+        .comment {
+            list-style-type: none;
+        }
+
+        .inputBox>input {
+            border-width: 0 0 1px;
+        }
+    </style>
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyB-0MHVYLC-drUsDZDbWhW2H5HHg_q5BiA",
+            authDomain: "sparta-7375a.firebaseapp.com",
+            projectId: "sparta-7375a",
+            storageBucket: "sparta-7375a.appspot.com",
+            messagingSenderId: "365594122469",
+            appId: "1:365594122469:web:7e6a7ffd1f82d5b895dc0c",
+            measurementId: "G-4PKDH8CS5F"
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+
+
+        //김우진 데이터베이스
+        $("#commentBtn").click(async function () {
+            let name = $('#userName').val();
+            let comment = $('#commentDetail').val();
+
+            let doc = {
+                'name': name,
+                'comment': comment
+            };
+            await addDoc(collection(db, "comment"), doc);
+            alert('저장 완료!');
+            window.location.reload();
+        })
+
+        let docs = await getDocs(collection(db, "comment"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            console.log(row);
+
+            let name = row['name'];
+            let comment = row['comment'];
+            console.log(name, comment);
+
+            let temp_html = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name}
+                            </span>
+                            ${comment}
+                        </div>
+            `;
+            $('#commentText').append(temp_html);
+        });
+
+        $("#comment_btn1").click(function () {
+            $("#commentContinerBox").css('display', 'flex').hide().fadeIn();
+        });
+
+        $("#closeBtn1").click(function () {
+            $("#commentContinerBox").fadeOut();
+        });  
+
+
+
+        // 김가은 데이터베이스
+        $("#commentBtn2").click(async function () {
+            let name2 = $('#userName2').val();
+            let comment2 = $('#commentDetail2').val();
+
+            let doc2 = {
+                'name': name2,
+                'comment': comment2
+            };
+            await addDoc(collection(db, "comment2"), doc2);
+            alert('저장 완료!');
+            window.location.reload();
+        })
+
+        let docs2 = await getDocs(collection(db, "comment2"));
+        docs2.forEach((doc2) => {
+            let row2 = doc2.data();
+            console.log(row2);
+
+            let name2 = row2['name'];
+            let comment2 = row2['comment'];
+            console.log(name2, comment2);
+
+            let temp_html2 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name2}
+                            </span>
+                            ${comment2}
+                        </div>
+            `;
+            $('#commentText2').append(temp_html2);
+        });
+
+        $("#comment_btn2").click(function () {
+            $("#commentContinerBox2").css('display', 'flex').hide().fadeIn();
+        });
+
+        $("#closeBtn2").click(function () {
+            $("#commentContinerBox2").fadeOut();
+        });  
+
+
+        // 이시영 데이터베이스
+        $("#commentBtn3").click(async function () {
+            let name3 = $('#userName3').val();
+            let comment3 = $('#commentDetail3').val();
+
+            let doc3 = {
+                'name': name3,
+                'comment': comment3
+            };
+            await addDoc(collection(db, "comment3"), doc3);
+            alert('저장 완료!');
+            window.location.reload();
+        })
+
+        let docs3 = await getDocs(collection(db, "comment3"));
+        docs3.forEach((doc3) => {
+            let row3 = doc3.data();
+            console.log(row3);
+
+            let name3 = row3['name'];
+            let comment3 = row3['comment'];
+            console.log(name3, comment3);
+
+            let temp_html3 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name3}
+                            </span>
+                            ${comment3}
+                        </div>
+            `;
+            $('#commentText3').append(temp_html3);
+        });
+
+        $("#comment_btn3").click(function () {
+            $("#commentContinerBox3").css('display', 'flex').hide().fadeIn();
+        });
+
+        $("#closeBtn3").click(function () {
+            $("#commentContinerBox3").fadeOut();
+        }); 
+
+        // 이상헌 데이터베이스
+        $("#commentBtn4").click(async function () {
+            let name4 = $('#userName4').val();
+            let comment4 = $('#commentDetail4').val();
+
+            let doc4 = {
+                'name': name4,
+                'comment': comment4
+            };
+            await addDoc(collection(db, "comment4"), doc4);
+            alert('저장 완료!');
+            window.location.reload();
+        })
+
+        let docs4 = await getDocs(collection(db, "comment4"));
+        docs4.forEach((doc4) => {
+            let row4 = doc4.data();
+            console.log(row4);
+
+            let name4 = row4['name'];
+            let comment4 = row4['comment'];
+            console.log(name4, comment4);
+
+            let temp_html4 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name4}
+                            </span>
+                            ${comment4}
+                        </div>
+            `;
+            $('#commentText4').append(temp_html4);
+        });
+
+        $("#comment_btn4").click(function () {
+            $("#commentContinerBox4").css('display', 'flex').hide().fadeIn();
+        });
+
+        $("#closeBtn4").click(function () {
+            $("#commentContinerBox4").fadeOut();
+        });
+
+        // 김우석 데이터베이스
+        $("#commentBtn5").click(async function () {
+            let name5 = $('#userName5').val();
+            let comment5 = $('#commentDetail5').val();
+
+            let doc5 = {
+                'name': name5,
+                'comment': comment5
+            };
+            await addDoc(collection(db, "comment5"), doc5);
+            alert('저장 완료!');
+            window.location.reload();
+        })
+
+        let docs5 = await getDocs(collection(db, "comment5"));
+        docs5.forEach((doc5) => {
+            let row5 = doc5.data();
+            console.log(row5);
+
+            let name5 = row5['name'];
+            let comment5 = row5['comment'];
+            console.log(name5, comment5);
+
+            let temp_html5 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name5}
+                            </span>
+                            ${comment5}
+                        </div>
+            `;
+            $('#commentText5').append(temp_html5);
+        });
+
+        $("#comment_btn5").click(function () {
+            $("#commentContinerBox5").css('display', 'flex').hide().fadeIn();
+        });
+
+        $("#closeBtn5").click(function () {
+            $("#commentContinerBox5").fadeOut();
+        });
+    </script>
+</head>
+
+<body>
+
+    <!--김우진 댓글창-->
+    <button id="comment_btn1" type="button" class="btn btn-outline-primary comment_btn">댓글 보기1</button>
+
+    <div id="commentContinerBox" class="commentContinerBox">
+        <div class="closeBtn"><button id="closeBtn1"></button></div>
+        <div id="commentBBox" class="commentBBox">
+            <div class="imgBox">
+                <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png" alt=""> <!-- 사진별로 댓글 창 만들기. -->
+            </div>
+
+            <div class="commentBox">
+                <ul class="comment">
+                    <li id="commentText" class="commentText">
+                        
+                    </li>
+                </ul>
+
+                <div class="commentContainer">
+                    <form class="commentWrap">
+                        <div class="inputBox">
+                            <input id="userName" class="userName" type="text" placeholder="이름" />
+                            <input id="commentDetail" class="commentDetail" type="text" placeholder="댓글달기..." />
+                        </div>
+                        <button id="commentBtn" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--김가은 댓글창-->
+    <button id="comment_btn2" type="button" class="btn btn-outline-primary comment_btn">댓글 보기2</button>
+
+    <div id="commentContinerBox2" class="commentContinerBox">
+        <div class="closeBtn"><button id="closeBtn2"></button></div>
+        <div id="commentBBox2" class="commentBBox">
+            <div class="imgBox">
+                <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg" alt=""> <!-- 사진별로 댓글 창 만들기. -->
+            </div>
+
+            <div class="commentBox">
+                <ul class="comment">
+                    <li id="commentText2" class="commentText">
+                        
+                    </li>
+                </ul>
+
+                <div class="commentContainer">
+                    <form class="commentWrap">
+                        <div class="inputBox">
+                            <input id="userName2" class="userName" type="text" placeholder="이름" />
+                            <input id="commentDetail2" class="commentDetail" type="text" placeholder="댓글달기..." />
+                        </div>
+                        <button id="commentBtn2" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--이시영 댓글창-->
+    <button id="comment_btn3" type="button" class="btn btn-outline-primary comment_btn">댓글 보기3</button>
+
+    <div id="commentContinerBox3" class="commentContinerBox">
+        <div class="closeBtn"><button id="closeBtn3"></button></div>
+        <div id="commentBBox3" class="commentBBox">
+            <div class="imgBox">
+                <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg" alt=""> <!-- 사진별로 댓글 창 만들기. -->
+            </div>
+
+            <div class="commentBox">
+                <ul class="comment">
+                    <li id="commentText3" class="commentText">
+                        
+                    </li>
+                </ul>
+
+                <div class="commentContainer">
+                    <form class="commentWrap">
+                        <div class="inputBox">
+                            <input id="userName3" class="userName" type="text" placeholder="이름" />
+                            <input id="commentDetail3" class="commentDetail" type="text" placeholder="댓글달기..." />
+                        </div>
+                        <button id="commentBtn3" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--이상헌 댓글창-->
+    <button id="comment_btn4" type="button" class="btn btn-outline-primary comment_btn">댓글 보기4</button>
+
+    <div id="commentContinerBox4" class="commentContinerBox">
+        <div class="closeBtn"><button id="closeBtn4"></button></div>
+        <div id="commentBBox4" class="commentBBox">
+            <div class="imgBox">
+                <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg" alt=""> <!-- 사진별로 댓글 창 만들기. -->
+            </div>
+
+            <div class="commentBox">
+                <ul class="comment">
+                    <li id="commentText4" class="commentText">
+                        
+                    </li>
+                </ul>
+
+                <div class="commentContainer">
+                    <form class="commentWrap">
+                        <div class="inputBox">
+                            <input id="userName4" class="userName" type="text" placeholder="이름" />
+                            <input id="commentDetail4" class="commentDetail" type="text" placeholder="댓글달기..." />
+                        </div>
+                        <button id="commentBtn4" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--김우석 댓글창-->
+    <button id="comment_btn5" type="button" class="btn btn-outline-primary comment_btn">댓글 보기5</button>
+
+    <div id="commentContinerBox5" class="commentContinerBox">
+        <div class="closeBtn"><button id="closeBtn5"></button></div>
+        <div id="commentBBox5" class="commentBBox">
+            <div class="imgBox">
+                <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg" alt=""> <!-- 사진별로 댓글 창 만들기. -->
+            </div>
+
+            <div class="commentBox">
+                <ul class="comment">
+                    <li id="commentText5" class="commentText">
+                        
+                    </li>
+                </ul>
+
+                <div class="commentContainer">
+                    <form class="commentWrap">
+                        <div class="inputBox">
+                            <input id="userName5" class="userName" type="text" placeholder="이름" />
+                            <input id="commentDetail5" class="commentDetail" type="text" placeholder="댓글달기..." />
+                        </div>
+                        <button id="commentBtn5" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
