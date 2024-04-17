@@ -118,7 +118,7 @@
       align-items: center;
       text-align: center;
     }
-
+    
     .profile_pi img {
       max-width: 80%;
       max-height: 80%;
@@ -151,7 +151,7 @@
       background-size: cover;
       width: 80.1669vw;
       height: 72.2222vh;
-      gap: 50px;
+      gap: 50px; 
       box-shadow: 5px 5px 5px 5px black;
     }
 
@@ -638,44 +638,53 @@
         page = lastPage;
       }
       console.log(e.deltaY)
-      wrap.style.top = page * -100 + 'vh';
+      const scrollToY = page * window.innerHeight;
+      window.scrollTo({ top: scrollToY, behavior: 'smooth' });
     }, { passive: false }); // 스크롤 기능 제거
 
     $('.topbtn').click(async function () {
       $('html, body').animate({scrollTop:0}, 600)
         return false;
     })
-
+    //시영님
       $('#iinkinfo1').click(function () {
         $('html, body').animate({scrollTop:1950}, 600)
+        page = 2;
         return false;
     })
-
+    //가은님
     $('#iinkinfo2').click(function () {
         $('html, body').animate({scrollTop:2900}, 600)
+        page = 3;
         return false;
     })
+    //우진님
     $('#iinkinfo3').click(function () {
         $('html, body').animate({scrollTop:950}, 600)
+        page = 1;
         return false;
     })
+    //우석님
     $('#iinkinfo4').click(function () {
         $('html, body').animate({scrollTop:3850}, 600)
+        page = 4;
         return false;
     })
+    //상헌님
     $('#iinkinfo5').click(function () {
         $('html, body').animate({scrollTop:4850}, 600)
+        page = 5;
         return false;
     })
     $('#iinkinfo6').click(function () {
         $('html, body').animate({scrollTop:5800}, 600)
+        page = 6;
         return false;
     })
   </script>
 </head>
 
-<body>
-  <div class="wrap">
+<body class="wrap">
     <div class="Scrollpage">
       <img class="project-logo" src="https://raw.githubusercontent.com/j0462/Web/main/image/projectlogo.png"
         alt="Project Logo" />
@@ -736,8 +745,8 @@
               </div>
               <div class="infocontent">5명의 멤버들이 1개의 팀이 되었을 때 6번째 감각이 생긴다.</div>
               <!-- 내용들 -->
-              <div class="infocontent">프론트 유기하고 백엔드로 도망가기</div>
-              <div class="infocontent">매우 구 시대적인 개발 프로세스</div>
+              <div class="infocontent">뒤도 안돌아보고 백엔드로 도망가기</div>
+              <div class="infocontent">구 시대적인 개발 프로세스</div>
               <div class="infocontent">개발중 빨간약 투약 금지</div>
             </div>
           </main>
@@ -1017,6 +1026,7 @@
         </div>
       </div>
     </div>
+   
     <div class="footer">
       <span style="font-size: larger; font-weight: bold">Copyright @2024 SixSense. All rights reserved</span><br />
       <span style="font-size: medium";>소속 : 내일배움캠프 spring 트랙 B6조 </span>
@@ -1027,7 +1037,6 @@
     <button type="button" class="topbtn" id="topbtn">
       <img src="https://raw.githubusercontent.com/j0462/Web/main/image/topbtn.png" width="70px" height="70px" alt="위로가기">
     </button>
-  </div>
 </body>
 
 </html>

@@ -33,7 +33,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 12vh;
+      height: 100vh;
+      width: 100vw;
     }
 
     .circle-row {
@@ -42,7 +43,8 @@
     }
 
     .circle {
-      margin: 4.6vh 2.6vw 4.6vh 2.6vw;
+      cursor: pointer;
+      margin: 2.6vh 2.6vw 2.6vh 2.6vw;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -50,9 +52,9 @@
 
     .project-logo {
       position: absolute;
-      top: 1.85vh;
-      left: 1.04vw;
-      width: 7.81vw;
+      top: 20px;
+      left: 20px;
+      width: 150px;
       height: auto;
     }
 
@@ -110,22 +112,28 @@
       margin-left: 7.8125vw;
       margin-right: 7.8125vw;
       width: 31.25vw;
-      height: 37.03vh;
+      height: 55.03vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-
+    
     .profile_pi img {
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 80%;
+      max-height: 80%;
     }
 
     .profile_info {
+      justify-content:center;
+      align-items: center;
       font-family: Happiness-Sans-Title;
       margin-top: 0.2962vh;
       margin-bottom: 0.2962vh;
-      margin-left: 20.208vh;
-      margin-right: 20.208vh;
+      margin-left: 7.8125vw;
+      margin-right: 7.8125vw;
       width: 31.25vw;
-      height: 72.2222vh;
+      height: 55.03vh;
     }
 
     .name {
@@ -143,7 +151,7 @@
       background-size: cover;
       width: 80.1669vw;
       height: 72.2222vh;
-      gap: 50px;
+      gap: 50px; 
       box-shadow: 5px 5px 5px 5px black;
     }
 
@@ -210,7 +218,7 @@
     }
 
     .comment_btn {
-      margin: 30px 0px 100px 120px;
+      margin-top: 2.77778vh;
       border: 3px solid #de4848;
       color: #6e6e6e;
       position: relative;
@@ -321,6 +329,7 @@
       padding: 100px 0px 100px 0px;
       border-radius: 10px;
       display: none;
+      z-index: 1;
     }
 
     .commentText {
@@ -334,6 +343,32 @@
     .inputBox>input {
       border-width: 0 0 1px;
     }
+
+    .topbtn {
+      position: fixed;
+      bottom: 50px;
+      right: 100px;
+      border: transparent;
+      background-color: transparent;
+      cursor: pointer
+    }
+
+    .wrap {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: 2s;
+
+    }
+
+    .Scrollpage {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
   </style>
   <script type="module">
     // Firebase SDK 라이브러리 가져오기
@@ -583,350 +618,414 @@
         $(".infocontent").eq(index).slideToggle();
       });
     });
+
+    const wrap = document.getElementsByClassName('wrap')[0]; // 보이는 영역
+    const Scrollpage = document.getElementsByClassName('Scrollpage');
+    let page = 0;
+    const lastPage = Scrollpage.length -1 ;// 마지막 페이지
+
+    window.addEventListener('wheel', (e) => {
+      e.preventDefault();
+
+      if (e.deltaY > 0) {  //휠을내릴때
+        page++;        //페이지는 올라간다
+      } else if (e.deltaY < 0) { //휠을 올리면
+        page--;             //페이지는 내려간다
+      }
+      if (page < 0) {
+        page = 0;
+      } else if (page > lastPage) {
+        page = lastPage;
+      }
+      console.log(e.deltaY)
+      wrap.style.top = page * -100 + 'vh';
+    }, { passive: false }); // 스크롤 기능 제거
+
+    $('.topbtn').click(async function () {
+      $('html, body').animate({scrollTop:0}, 600)
+        return false;
+    })
+
+      $('#iinkinfo1').click(function () {
+        $('html, body').animate({scrollTop:1950}, 600)
+        return false;
+    })
+
+    $('#iinkinfo2').click(function () {
+        $('html, body').animate({scrollTop:2900}, 600)
+        return false;
+    })
+    $('#iinkinfo3').click(function () {
+        $('html, body').animate({scrollTop:950}, 600)
+        return false;
+    })
+    $('#iinkinfo4').click(function () {
+        $('html, body').animate({scrollTop:3850}, 600)
+        return false;
+    })
+    $('#iinkinfo5').click(function () {
+        $('html, body').animate({scrollTop:4850}, 600)
+        return false;
+    })
+    $('#iinkinfo6').click(function () {
+        $('html, body').animate({scrollTop:5800}, 600)
+        return false;
+    })
   </script>
 </head>
 
-<body>
-  <img class="project-logo" src="https://raw.githubusercontent.com/j0462/Web/main/image/projectlogo.png"
-    alt="Project Logo" />
-
-  <div class="content">
-    <div class="circle-container">
-      <div class="circle">
-        <a href="#siyoung">
-          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/siyoung.png" alt="Image 1(시영)" width="150"
-            height="150" />
-        </a>
-      </div>
-      <div class="circle-row">
-        <div class="circle">
-          <a href="#gaeun">
-            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/gaeun.png" alt="Image 2(가은)" width="150"
-              height="150" />
-          </a>
-        </div>
-        <div class="circle">
-          <a href="#team">
-            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/logo.png" alt="Image 3 (팀 로고)" width="250"
-              height="250" /></a>
-        </div>
-        <div class="circle">
-          <a href="#woojin">
-            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woojin.png" alt="Image 4 (우진)" width="150"
-              height="150" /></a>
-        </div>
-      </div>
-      <div class="circle-row">
-        <div class="circle">
-          <a href="#wooseok">
-            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/wooseok.png" alt="Image 5 (우석)" width="150"
-              height="150" />
-          </a>
-        </div>
-        <div class="circle">
-          <a href="#sangheon">
-            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sangheon.png" alt="Image 6 (상헌)"
-              width="150" height="150" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="team" class="section">
-    <div class="info">
-      <header>
-        <div class="img-container">
-          <img src="https://raw.githubusercontent.com/j0462/Web/main/image/teamlogo.png" width="40%" />
-        </div>
-      </header>
-      <main>
-        <div class="toggle-container">
-          <div>
-            <span><button class="triangle-button"></button>팀명 의미</span>
-            <span><button class="triangle-button"></button>팀 목표</span>
-            <span><button class="triangle-button"></button>팀 특징</span>
-            <span><button class="triangle-button"></button>팀내 약속</span>
+<body class="wrap">
+    <div class="Scrollpage">
+      <img class="project-logo" src="https://raw.githubusercontent.com/j0462/Web/main/image/projectlogo.png"
+        alt="Project Logo" />
+      <div class="content">
+        <div class="circle-container">
+          <div class="circle" >
+              <img  src="https://raw.githubusercontent.com/j0462/Web/main/image/siyoung.png" id="iinkinfo1" alt="Image 1(시영)"
+                width="150" height="150" />
+            </a>
           </div>
-          <div class="infocontent">5명의 팀원 + 1개의 팀 합쳐서 6이라는 점이 의미심장</div>
-          <!-- 내용들 -->
-          <div class="infocontent">프론트 유기하고 백엔드로 도망가기</div>
-          <div class="infocontent">매우 구 시대적인 개발 프로세스</div>
-          <div class="infocontent">개발중 빨간약 투약 금지</div>
-        </div>
-      </main>
-    </div>
-  </div>
-
-  <div class="section" id="siyoung">
-    <div class="box">
-      <div class="profile_pi">
-        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg" alt="" />
-      </div>
-      <div class="profile_info">
-        <h1 class="name">이시영</h1>
-        <h3>생년월일 : 1998년 08월 04일</h3>
-        <h3>MBTI : ENFP</h3>
-        <h3>취미 : 게임, 헬스, 사진 찍기, 스냅 촬영</h3>
-        <h3>장점 : 하고자 하는 것이 있으면 끝까지 합니다.</h3>
-        <h3>협업 스타일 : 팀원들 간의 의견 조율을 중요시 합니다.</h3>
-        <h3>
-          블로그 주소 :
-          <a href="https://velog.io/@silica_o3o/posts" target="_blank">velog.io/@silica_o3o/posts</a>
-        </h3>
-        <h3>TMI : 오버워치 전 프로게임팀 코치 출신</h3>
-        <!--이시영 댓글창-->
-        <button id="comment_btn3" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
-
-        <div id="commentContinerBox3" class="commentContinerBox">
-          <div class="closeBtn"><button id="closeBtn3"></button></div>
-          <div id="commentBBox3" class="commentBBox">
-            <div class="imgBox">
-              <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg"
-                alt=""> <!-- 사진별로 댓글 창 만들기. -->
+          <div class="circle-row">
+            <div class="circle">
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/gaeun.png"  id="iinkinfo2" alt="Image 2(가은)"
+                  width="150" height="150" />
+              </a>
             </div>
+            <div class="circle">
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/logo.png" id="iinkinfo3" alt="Image 3 (팀 로고)"
+                  width="250" height="250" /></a>
+            </div>
+            <div class="circle">
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woojin.png" id="iinkinfo4" alt="Image 4 (우진)"
+                  width="150" height="150" /></a>
+            </div>
+          </div>
+          <div class="circle-row">
+            <div class="circle">
+              
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/wooseok.png" id="iinkinfo5" alt="Image 5 (우석)"
+                  width="150" height="150" />
+              </a>
+            </div>
+            <div class="circle">
+        
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sangheon.png" id="iinkinfo6" alt="Image 6 (상헌)"
+                  width="150" height="150" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div id="team" class="section">
+        <div class="info">
+          <header>
+            <div class="img-container">
+              <img src="https://raw.githubusercontent.com/j0462/Web/main/image/teamlogo.png" width="40%" />
+            </div>
+          </header>
+          <main>
+            <div class="toggle-container">
+              <div>
+                <span><button class="triangle-button"></button>팀명 의미</span>
+                <span><button class="triangle-button"></button>팀 목표</span>
+                <span><button class="triangle-button"></button>팀 특징</span>
+                <span><button class="triangle-button"></button>팀내 약속</span>
+              </div>
+              <div class="infocontent">5명의 멤버들이 1개의 팀이 되었을 때 6번째 감각이 생긴다.</div>
+              <!-- 내용들 -->
+              <div class="infocontent">프론트 유기하고 백엔드로 도망가기</div>
+              <div class="infocontent">매우 구 시대적인 개발 프로세스</div>
+              <div class="infocontent">개발중 빨간약 투약 금지</div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div class="section" id="siyoung">
+        <div class="box">
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg"  alt="" />
+            <button id="comment_btn3" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+          <div class="profile_info">
+            <h1 class="name">이시영</h1>
+            <h3>생년월일 : 1998년 08월 04일</h3>
+            <h3>MBTI : ENFP</h3>
+            <h3>취미 : 게임, 헬스, 사진 찍기, 스냅 촬영</h3>
+            <h3>장점 : 하고자 하는 것이 있으면 끝까지 합니다.</h3>
+            <h3>협업 스타일 : 팀원들 간의 의견 조율을 중요시 합니다.</h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@silica_o3o/posts" target="_blank">velog.io/@silica_o3o/posts</a>
+            </h3>
+            <h3>TMI : 오버워치 전 프로게임팀 코치 출신</h3>
+            <!--이시영 댓글창-->
 
-            <div class="commentBox">
-              <ul class="comment">
-                <li id="commentText3" class="commentText">
 
-                </li>
-              </ul>
+            <div id="commentContinerBox3" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn3"></button></div>
+              <div id="commentBBox3" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
 
-              <div class="commentContainer">
-                <form class="commentWrap">
-                  <div class="inputBox">
-                    <input id="userName3" class="userName" type="text" placeholder="이름" />
-                    <input id="commentDetail3" class="commentDetail" type="text" placeholder="댓글달기..." />
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText3" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName3" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail3" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn3" class="commentBtn" type="button">게시</button>
+
+                    </form>
                   </div>
-                  <button id="commentBtn3" class="commentBtn" type="button">게시</button>
-
-                </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="Scrollpage">
+      <div class="section" id="gaeun">
+        <div class="box">
+          <div class="profile_info">
+            <h1 class="name">김가은</h1>
+            <h3>생년월일 : 2002년 07월 06일</h3>
+            <h3>MBTI : INFJ</h3>
+            <h3>취미 : 독서, 웹툰, 음악 감상, 홈 프로텍트</h3>
+            <h3>장점 : 책임감이 강함</h3>
+            <h3>협업 스타일 : 버스타는 팀원이 없도록 모두와 함께 합니다~!</h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@litlight/posts" target="_blank">velog.io/@litlight/posts</a>
+            </h3>
+            <h3>TMI : 귀엽고 깜찍한 강아지와 함께 지낸답니다🐶</h3>
+            <!--김가은 댓글창-->
 
-  <div class="section" id="gaeun">
-    <div class="box">
-      <div class="profile_info">
-        <h1 class="name">김가은</h1>
-        <h3>생년월일 : 2002년 07월 06일</h3>
-        <h3>MBTI : INFJ</h3>
-        <h3>취미 : 독서, 웹툰, 음악 감상, 홈 프로텍트</h3>
-        <h3>장점 : 책임감이 강함</h3>
-        <h3>협업 스타일 : 버스타는 팀원이 없도록 모두와 함께 합니다~!</h3>
-        <h3>
-          블로그 주소 :
-          <a href="https://velog.io/@litlight/posts" target="_blank">velog.io/@litlight/posts</a>
-        </h3>
-        <h3>TMI : 귀엽고 깜찍한 강아지와 함께 지낸답니다🐶</h3>
-        <!--김가은 댓글창-->
-        <button id="comment_btn2" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
 
-        <div id="commentContinerBox2" class="commentContinerBox">
-          <div class="closeBtn"><button id="closeBtn2"></button></div>
-          <div id="commentBBox2" class="commentBBox">
-            <div class="imgBox">
-              <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg"
-                alt=""> <!-- 사진별로 댓글 창 만들기. -->
-            </div>
+            <div id="commentContinerBox2" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn2"></button></div>
+              <div id="commentBBox2" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
 
-            <div class="commentBox">
-              <ul class="comment">
-                <li id="commentText2" class="commentText">
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText2" class="commentText">
 
-                </li>
-              </ul>
+                    </li>
+                  </ul>
 
-              <div class="commentContainer">
-                <form class="commentWrap">
-                  <div class="inputBox">
-                    <input id="userName2" class="userName" type="text" placeholder="이름" />
-                    <input id="commentDetail2" class="commentDetail" type="text" placeholder="댓글달기..." />
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName2" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail2" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn2" class="commentBtn" type="button">게시</button>
+
+                    </form>
                   </div>
-                  <button id="commentBtn2" class="commentBtn" type="button">게시</button>
-
-                </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="profile_pi">
-        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg" alt="" />
-      </div>
-    </div>
-  </div>
-
-  <div class="section" id="woojin">
-    <div class="box">
-      <div class="profile_pi">
-        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png" alt="" />
-      </div>
-      <div class="profile_info">
-        <h1 class="name">김우진</h1>
-        <h3>생년월일 : 2000년 06월 05일</h3>
-        <h3>MBTI : ISFP</h3>
-        <h3>취미 : 헬스, 뷰티, 패션 인스타그램</h3>
-        <h3>장점 : 긍정형 인간</h3>
-        <h3>협업 스타일 : 아이디어도 많이 내고 의견수렴도 잘해요!</h3>
-        <h3>
-          블로그 주소 :
-          <a href="kwj-study.tistory.com/posts" target="_blank">kwj-study.tistory.com/posts</a>
-        </h3>
-        <h3>TMI : 패션 인플루언서 활동 중</h3>
-        <!--김우진 댓글창-->
-        <button id="comment_btn1" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
-
-        <div id="commentContinerBox" class="commentContinerBox">
-          <div class="closeBtn"><button id="closeBtn1"></button></div>
-          <div id="commentBBox" class="commentBBox">
-            <div class="imgBox">
-              <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png"
-                alt=""> <!-- 사진별로 댓글 창 만들기. -->
-            </div>
-
-            <div class="commentBox">
-              <ul class="comment">
-                <li id="commentText" class="commentText">
-
-                </li>
-              </ul>
-
-              <div class="commentContainer">
-                <form class="commentWrap">
-                  <div class="inputBox">
-                    <input id="userName" class="userName" type="text" placeholder="이름" />
-                    <input id="commentDetail" class="commentDetail" type="text" placeholder="댓글달기..." />
-                  </div>
-                  <button id="commentBtn" class="commentBtn" type="button">게시</button>
-
-                </form>
-              </div>
-            </div>
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg" alt="" />
+            <button id="comment_btn2" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="section" id="wooseok">
-    <div class="box">
-      <div class="profile_info">
-        <h1 class="name">김우석</h1>
-        <h3>생년월일 : 1997년 01월 21일</h3>
-        <h3>MBTI : ESFJ</h3>
-        <h3>취미 : 음악 감상, 영화 시청, 드라이브</h3>
-        <h3>장점 : 맡은 업무에 최선을 다합니다!</h3>
-        <h3>
-          협업 스타일 : 방향이 정해진 일에 묵묵하게 서포트 하면서 나아가려고
-          합니다.
-        </h3>
-        <h3>
-          블로그 주소 :
-          <a href="https://velog.io/@kkx152/posts" target="_blank">velog.io/@kkx152/posts</a>
-        </h3>
-        <h3>TMI : 모터스포츠에 관심이 많은편입니다 😃</h3>
-        <!--김우석 댓글창-->
-        <button id="comment_btn5" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
-
-        <div id="commentContinerBox5" class="commentContinerBox">
-          <div class="closeBtn"><button id="closeBtn5"></button></div>
-          <div id="commentBBox5" class="commentBBox">
-            <div class="imgBox">
-              <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg"
-                alt=""> <!-- 사진별로 댓글 창 만들기. -->
-            </div>
-
-            <div class="commentBox">
-              <ul class="comment">
-                <li id="commentText5" class="commentText">
-
-                </li>
-              </ul>
-
-              <div class="commentContainer">
-                <form class="commentWrap">
-                  <div class="inputBox">
-                    <input id="userName5" class="userName" type="text" placeholder="이름" />
-                    <input id="commentDetail5" class="commentDetail" type="text" placeholder="댓글달기..." />
-                  </div>
-                  <button id="commentBtn5" class="commentBtn" type="button">게시</button>
-
-                </form>
-              </div>
-            </div>
+    <div class="Scrollpage">
+      <div class="section" id="woojin">
+        <div class="box">
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png" alt="" />
+            <button id="comment_btn1" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
           </div>
-        </div>
-      </div>
-      <div class="profile_pi">
-        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg" alt="" />
-      </div>
-    </div>
-  </div>
+          <div class="profile_info">
+            <h1 class="name">김우진</h1>
+            <h3>생년월일 : 2000년 06월 05일</h3>
+            <h3>MBTI : ISFP</h3>
+            <h3>취미 : 헬스, 뷰티, 패션 인스타그램</h3>
+            <h3>장점 : 긍정형 인간</h3>
+            <h3>협업 스타일 : 아이디어도 많이 내고 의견수렴도 잘해요!</h3>
+            <h3>
+              블로그 주소 :
+              <a href="kwj-study.tistory.com/posts" target="_blank">kwj-study.tistory.com/posts</a>
+            </h3>
+            <h3>TMI : 패션 인플루언서 활동 중</h3>
+            <!--김우진 댓글창-->
 
-  <div class="section" id="sangheon">
-    <div class="box">
-      <div class="profile_pi">
-        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg" alt="" />
-      </div>
-      <div class="profile_info">
-        <h1 class="name">이상헌</h1>
-        <h3>생년월일 : 2001년 01월 01일</h3>
-        <h3>MBTI : ISTP</h3>
-        <h3>취미 : 게임 플레이 및 분석, 유튜브 시청</h3>
-        <h3>장점 : 다양한 관점으로 생각하여 보다 나은 결과를 만들어낸다.</h3>
-        <h3>협업 스타일 : 의지만 있다면 옆에서 도와주는 것을 좋아합니다.</h3>
-        <h3>
-          블로그 주소 :
-          <a href="https://velog.io/@jakehun/posts" target="_blank">velog.io/@jakehun/posts</a>
-        </h3>
-        <h3>TMI : 구글에 게임 출시한 경험 有</h3>
-        <!--이상헌 댓글창-->
-        <button id="comment_btn4" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
 
-        <div id="commentContinerBox4" class="commentContinerBox">
-          <div class="closeBtn"><button id="closeBtn4"></button></div>
-          <div id="commentBBox4" class="commentBBox">
-            <div class="imgBox">
-              <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg"
-                alt=""> <!-- 사진별로 댓글 창 만들기. -->
-            </div>
+            <div id="commentContinerBox" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn1"></button></div>
+              <div id="commentBBox" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
 
-            <div class="commentBox">
-              <ul class="comment">
-                <li id="commentText4" class="commentText">
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText" class="commentText">
 
-                </li>
-              </ul>
+                    </li>
+                  </ul>
 
-              <div class="commentContainer">
-                <form class="commentWrap">
-                  <div class="inputBox">
-                    <input id="userName4" class="userName" type="text" placeholder="이름" />
-                    <input id="commentDetail4" class="commentDetail" type="text" placeholder="댓글달기..." />
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn" class="commentBtn" type="button">게시</button>
+
+                    </form>
                   </div>
-                  <button id="commentBtn4" class="commentBtn" type="button">게시</button>
-
-                </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="Scrollpage">
+      <div class="section" id="wooseok">
+        <div class="box">
+          <div class="profile_info">
+            <h1 class="name">김우석</h1>
+            <h3>생년월일 : 1997년 01월 21일</h3>
+            <h3>MBTI : ESFJ</h3>
+            <h3>취미 : 음악 감상, 영화 시청, 드라이브</h3>
+            <h3>장점 : 맡은 업무에 최선을 다합니다!</h3>
+            <h3>
+              협업 스타일 : 방향이 정해진 일에 묵묵하게 서포트 하면서 나아가려고
+              합니다.
+            </h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@kkx152/posts" target="_blank">velog.io/@kkx152/posts</a>
+            </h3>
+            <h3>TMI : 모터스포츠에 관심이 많은편입니다 😃</h3>
+            <!--김우석 댓글창-->
 
-  <div class="footer">
-    <span style="font-size: larger; font-weight: bold">Copyright @2024 SixSense. All rights reserved</span><br />
-    <span>소속 : 내일배움캠프 spring 트랙 B6조 </span>
-    <span>팀 멤버 : 이시영, 김가은, 이상헌, 김우진, 김우석 </span>
-    <span>이메일 : SixthSense6@gmail.com </span>
-  </div>
+
+            <div id="commentContinerBox5" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn5"></button></div>
+              <div id="commentBBox5" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
+
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText5" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName5" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail5" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn5" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg" alt="" />
+            <button id="comment_btn5" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div class="section" id="sangheon">
+        <div class="box">
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg" alt="" />
+            <button id="comment_btn4" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+          <div class="profile_info">
+            <h1 class="name">이상헌</h1>
+            <h3>생년월일 : 2001년 01월 01일</h3>
+            <h3>MBTI : ISTP</h3>
+            <h3>취미 : 게임 플레이 및 분석, 유튜브 시청</h3>
+            <h3>장점 : 다양한 관점으로 생각하여 보다 나은 결과를 만들어낸다.</h3>
+            <h3>협업 스타일 : 의지만 있다면 옆에서 도와주는 것을 좋아합니다.</h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@jakehun/posts" target="_blank">velog.io/@jakehun/posts</a>
+            </h3>
+            <h3>TMI : 구글에 게임 출시한 경험 有</h3>
+            <!--이상헌 댓글창-->
+
+
+            <div id="commentContinerBox4" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn4"></button></div>
+              <div id="commentBBox4" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
+
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText4" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName4" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail4" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn4" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span style="font-size: larger; font-weight: bold">Copyright @2024 SixSense. All rights reserved</span><br />
+      <span style="font-size: medium";>소속 : 내일배움캠프 spring 트랙 B6조 </span>
+      <span style="font-size: medium";>팀 멤버 : 이시영, 김가은, 이상헌, 김우진, 김우석 </span>
+      <span style="font-size: medium";>이메일 : SixthSense6@gmail.com </span>
+    </div>
+
+    <button type="button" class="topbtn" id="topbtn">
+      <img src="https://raw.githubusercontent.com/j0462/Web/main/image/topbtn.png" width="70px" height="70px" alt="위로가기">
+    </button>
 </body>
 
 </html>
