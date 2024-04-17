@@ -339,6 +339,29 @@
     .inputBox>input {
       border-width: 0 0 1px;
     }
+
+    .topbtn {
+      position: fixed;
+      bottom: 50px;
+      right: 100px;
+      border: transparent;
+      background-color: transparent;
+      cursor: pointer
+    }
+
+    ::-webkit-scrollbar{
+        width: 8px;
+    }
+    ::-webkit-scrollbar-thumb{
+      height: 8%;
+      background: transparent;
+
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-track{
+      background:black;
+    }
+
   </style>
   <script type="module">
     // Firebase SDK 라이브러리 가져오기
@@ -587,6 +610,10 @@
           .slideUp();
         $(".infocontent").eq(index).slideToggle();
       });
+      $('#topbtn').click(function () {
+        $('html, body').animate({scrollTop:0}, 600)
+        return false;
+    })
     });
   </script>
 </head>
@@ -682,7 +709,7 @@
         </h3>
         <h3>TMI : 오버워치 전 프로게임팀 코치 출신</h3>
         <!--이시영 댓글창-->
-        
+
 
         <div id="commentContinerBox3" class="commentContinerBox">
           <div class="closeBtn"><button id="closeBtn3"></button></div>
@@ -731,7 +758,7 @@
         </h3>
         <h3>TMI : 귀엽고 깜찍한 강아지와 함께 지낸답니다🐶</h3>
         <!--김가은 댓글창-->
-        
+
 
         <div id="commentContinerBox2" class="commentContinerBox">
           <div class="closeBtn"><button id="closeBtn2"></button></div>
@@ -788,7 +815,7 @@
         </h3>
         <h3>TMI : 패션 인플루언서 활동 중</h3>
         <!--김우진 댓글창-->
-        
+
 
         <div id="commentContinerBox" class="commentContinerBox">
           <div class="closeBtn"><button id="closeBtn1"></button></div>
@@ -840,7 +867,7 @@
         </h3>
         <h3>TMI : 모터스포츠에 관심이 많은편입니다 😃</h3>
         <!--김우석 댓글창-->
-        
+
 
         <div id="commentContinerBox5" class="commentContinerBox">
           <div class="closeBtn"><button id="closeBtn5"></button></div>
@@ -881,9 +908,9 @@
   <div class="section" id="sangheon">
     <div class="box">
       <div class="profile_pi">
-        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg" alt="" />       
+        <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg" alt="" />
         <button id="comment_btn4" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
-      </div>      
+      </div>
       <div class="profile_info">
         <h1 class="name">이상헌</h1>
         <h3>생년월일 : 2001년 01월 01일</h3>
@@ -897,7 +924,7 @@
         </h3>
         <h3>TMI : 구글에 게임 출시한 경험 有</h3>
         <!--이상헌 댓글창-->
-        
+
 
         <div id="commentContinerBox4" class="commentContinerBox">
           <div class="closeBtn"><button id="closeBtn4"></button></div>
@@ -921,14 +948,17 @@
                     <input id="commentDetail4" class="commentDetail" type="text" placeholder="댓글달기..." />
                   </div>
                   <button id="commentBtn4" class="commentBtn" type="button">게시</button>
-
                 </form>
+
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <button type="button" class="topbtn" id="topbtn">
+      <img src="topbtn.png" width="70px" height="70px" alt="위로가기" id="topbtn">
   </div>
 
   <div class="footer">
