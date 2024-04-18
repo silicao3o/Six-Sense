@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>6TINGLE Web Page</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-image: linear-gradient(to bottom, #514b4b, #f74a4b);
+      position: relative;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .circle-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .circle {
+      cursor: pointer;
+      margin: 2.6vh 2.6vw 2.6vh 2.6vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 150px;
+      height: auto;
+    }
+
+    .footer {
+      background-color: #282828;
+      padding: 2.5vw;
+      text-align: left;
+      color: white;
+      width: 100%;
+    }
+
+    .footer span {
+      display: block;
+      margin-bottom: 1.0417vw;
+    }
+
+    .footer a {
+      display: block;
+      margin-bottom: 1.0417vw;
+    }
+
+    @font-face {
+      font-family: "Happiness-Sans-Title";
+      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .section {
+      height: 100vh;
+      width: 100vw;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /*팀원 사진 및 팀원 소개란*/
+    .box {
+      width: 80.1669vw;
+      height: 72.2222vh;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      color: black;
+      gap: 50px;
+      box-shadow: 5px 5px 5px 5px black;
+    }
+
+    /*팀원 사진공간*/
+    .profile_pi {
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: 7.8125vw;
+      margin-right: 7.8125vw;
+      width: 31.25vw;
+      height: 55.03vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .profile_pi img {
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .profile_info {
+      justify-content:center;
+      align-items: center;
+      font-family: Happiness-Sans-Title;
+      margin-top: 0.2962vh;
+      margin-bottom: 0.2962vh;
+      margin-left: 7.8125vw;
+      margin-right: 7.8125vw;
+      width: 31.25vw;
+      height: 55.03vh;
+    }
+
+    .name {
+      text-align: center;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .info {
+      /*큰사각형 색상*/
+      background-color: #f5f5f5;
+      background-size: cover;
+      width: 80.1669vw;
+      height: 72.2222vh;
+      gap: 50px; 
+      box-shadow: 5px 5px 5px 5px black;
+    }
+
+    .toggle-container {
+      margin-top: 2%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: transparent;
+    }
+
+    .infocontent {
+      font-size: 30px;
+      display: none;
+      width: calc(70% - 10px);
+      height: 13.8888vh;
+      margin: 5px;
+      padding: 20px 40px 20px 40px;
+      /*내용 박스 색상*/
+      background-color: #de4848;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+      left: 0;
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .triangle-button {
+      margin: 5px;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      background-color: transparent;
+    }
+
+    .triangle-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 10px 0 10px;
+      border-color: black transparent transparent transparent;
+    }
+
+    span {
+      margin-right: 50px;
+      font-size: 30px;
+    }
+
+    .img-container {
+      margin-top: 2%;
+      position: relative;
+      display: inline-block;
+    }
+
+    .comment_btn {
+      margin-top: 2.77778vh;
+      border: 3px solid #de4848;
+      color: #6e6e6e;
+      position: relative;
+      padding: 15px 30px;
+      border-radius: 15px;
+      font-family: "paybooc-Light", sans-serif;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .comment_btn:hover {
+      background-color: #ff5f2e;
+      color: #e1eef6;
+      letter-spacing: 2px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .comment_btn:active {
+      transform: scale(1.5);
+    }
+
+    .commentBBox {
+      background-color: #FFFFFF;
+      border-radius: 5px;
+      width: 800px;
+      margin: 0px auto 0px auto;
+      display: flex;
+
+    }
+
+    .profilePicture {
+      width: 300px;
+      /*           height: 375px;    */
+      object-fit: cover;
+    }
+
+    .commentBox {
+      margin-left: 100px;
+      width: 500px;
+      display: inline-block;
+      border-radius: 10px;
+    }
+
+    .commentNameBold {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .commentContainer {
+      padding: 10px;
+    }
+
+    .commentWrap {
+      display: flex;
+      justify-content: space-between;
+      height: 30px;
+    }
+
+    .userName {
+      width: 80px;
+    }
+
+    .commentBtn {
+      color: blue;
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    .closeBtn {
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 25%;
+      left: 70%;
+      right: 0;
+      bottom: 0;
+      margin: 0px 0px 0px auto;
+      float: right;
+    }
+
+    .closeBtn>button {
+      display: inline-block;
+      display: inline;
+      font-weight: 1000;
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+
+    }
+
+    .closeBtn>button:after {
+      display: inline-block;
+      content: "\00d7";
+      font-size: 20pt;
+    }
+
+    .commentContinerBox {
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(118, 127, 134, 0.2);
+      padding: 100px 0px 100px 0px;
+      border-radius: 10px;
+      display: none;
+      z-index: 1;
+    }
+
+    .commentText {
+      margin-top: 40px;
+    }
+
+    .comment {
+      list-style-type: none;
+    }
+
+    .inputBox>input {
+      border-width: 0 0 1px;
+    }
+
+    .topbtn {
+      position: fixed;
+      bottom: 50px;
+      right: 100px;
+      border: transparent;
+      background-color: transparent;
+      cursor: pointer
+    }
+
+    .wrap {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: 2s;
+
+    }
+
+    .Scrollpage {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+  </style>
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyB-0MHVYLC-drUsDZDbWhW2H5HHg_q5BiA",
+      authDomain: "sparta-7375a.firebaseapp.com",
+      projectId: "sparta-7375a",
+      storageBucket: "sparta-7375a.appspot.com",
+      messagingSenderId: "365594122469",
+      appId: "1:365594122469:web:7e6a7ffd1f82d5b895dc0c",
+      measurementId: "G-4PKDH8CS5F"
+    };
+
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+
+    //김우진 데이터베이스
+    $("#commentBtn").click(async function () {
+      let name = $('#userName').val();
+      let comment = $('#commentDetail').val();
+
+      let doc = {
+        'name': name,
+        'comment': comment
+      };
+      await addDoc(collection(db, "comment"), doc);
+      alert('저장 완료!');
+      window.location.reload();
+    })
+
+    let docs = await getDocs(collection(db, "comment"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+      console.log(row);
+
+      let name = row['name'];
+      let comment = row['comment'];
+      console.log(name, comment);
+
+      let temp_html = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name}
+                            </span>
+                            ${comment}
+                        </div>
+            `;
+      $('#commentText').append(temp_html);
+    });
+
+    $("#comment_btn1").click(function () {
+      $("#commentContinerBox").css('display', 'flex').hide().fadeIn();
+    });
+
+    $("#closeBtn1").click(function () {
+      $("#commentContinerBox").fadeOut();
+    });
+
+
+
+    // 김가은 데이터베이스
+    $("#commentBtn2").click(async function () {
+      let name2 = $('#userName2').val();
+      let comment2 = $('#commentDetail2').val();
+
+      let doc2 = {
+        'name': name2,
+        'comment': comment2
+      };
+      await addDoc(collection(db, "comment2"), doc2);
+      alert('저장 완료!');
+      window.location.reload();
+    })
+
+    let docs2 = await getDocs(collection(db, "comment2"));
+    docs2.forEach((doc2) => {
+      let row2 = doc2.data();
+      console.log(row2);
+
+      let name2 = row2['name'];
+      let comment2 = row2['comment'];
+      console.log(name2, comment2);
+
+      let temp_html2 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name2}
+                            </span>
+                            ${comment2}
+                        </div>
+            `;
+      $('#commentText2').append(temp_html2);
+    });
+
+    $("#comment_btn2").click(function () {
+      $("#commentContinerBox2").css('display', 'flex').hide().fadeIn();
+    });
+
+    $("#closeBtn2").click(function () {
+      $("#commentContinerBox2").fadeOut();
+    });
+
+
+    // 이시영 데이터베이스
+    $("#commentBtn3").click(async function () {
+      let name3 = $('#userName3').val();
+      let comment3 = $('#commentDetail3').val();
+
+      let doc3 = {
+        'name': name3,
+        'comment': comment3
+      };
+      await addDoc(collection(db, "comment3"), doc3);
+      alert('저장 완료!');
+      window.location.reload();
+    })
+
+    let docs3 = await getDocs(collection(db, "comment3"));
+    docs3.forEach((doc3) => {
+      let row3 = doc3.data();
+      console.log(row3);
+
+      let name3 = row3['name'];
+      let comment3 = row3['comment'];
+      console.log(name3, comment3);
+
+      let temp_html3 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name3}
+                            </span>
+                            ${comment3}
+                        </div>
+            `;
+      $('#commentText3').append(temp_html3);
+    });
+
+    $("#comment_btn3").click(function () {
+      $("#commentContinerBox3").css('display', 'flex').hide().fadeIn();
+    });
+
+    $("#closeBtn3").click(function () {
+      $("#commentContinerBox3").fadeOut();
+    });
+
+    // 이상헌 데이터베이스
+    $("#commentBtn4").click(async function () {
+      let name4 = $('#userName4').val();
+      let comment4 = $('#commentDetail4').val();
+
+      let doc4 = {
+        'name': name4,
+        'comment': comment4
+      };
+      await addDoc(collection(db, "comment4"), doc4);
+      alert('저장 완료!');
+      window.location.reload();
+    })
+
+    let docs4 = await getDocs(collection(db, "comment4"));
+    docs4.forEach((doc4) => {
+      let row4 = doc4.data();
+      console.log(row4);
+
+      let name4 = row4['name'];
+      let comment4 = row4['comment'];
+      console.log(name4, comment4);
+
+      let temp_html4 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name4}
+                            </span>
+                            ${comment4}
+                        </div>
+            `;
+      $('#commentText4').append(temp_html4);
+    });
+
+    $("#comment_btn4").click(function () {
+      $("#commentContinerBox4").css('display', 'flex').hide().fadeIn();
+    });
+
+    $("#closeBtn4").click(function () {
+      $("#commentContinerBox4").fadeOut();
+    });
+
+    // 김우석 데이터베이스
+    $("#commentBtn5").click(async function () {
+      let name5 = $('#userName5').val();
+      let comment5 = $('#commentDetail5').val();
+
+      let doc5 = {
+        'name': name5,
+        'comment': comment5
+      };
+      await addDoc(collection(db, "comment5"), doc5);
+      alert('저장 완료!');
+      window.location.reload();
+    })
+
+    let docs5 = await getDocs(collection(db, "comment5"));
+    docs5.forEach((doc5) => {
+      let row5 = doc5.data();
+      console.log(row5);
+
+      let name5 = row5['name'];
+      let comment5 = row5['comment'];
+      console.log(name5, comment5);
+
+      let temp_html5 = `
+            <div class="commentMargin">
+                            <span class="commentNameBold">
+                                ${name5}
+                            </span>
+                            ${comment5}
+                        </div>
+            `;
+      $('#commentText5').append(temp_html5);
+    });
+
+    $("#comment_btn5").click(function () {
+      $("#commentContinerBox5").css('display', 'flex').hide().fadeIn();
+    });
+
+    $("#closeBtn5").click(function () {
+      $("#commentContinerBox5").fadeOut();
+    });
+
+    // 토글
+    $(document).ready(function () {
+      $(".triangle-button").click(function () {
+        var index = $(this).index(".triangle-button");
+        $(".infocontent")
+          .not(":eq(" + index + ")")
+          .slideUp();
+        $(".infocontent").eq(index).slideToggle();
+      });
+    });
+
+    const wrap = document.getElementsByClassName('wrap')[0]; // 보이는 영역
+    const Scrollpage = document.getElementsByClassName('Scrollpage');
+    let page = 0;
+    const lastPage = Scrollpage.length -1 ;// 마지막 페이지
+
+    window.addEventListener('wheel', (e) => {
+      e.preventDefault();
+
+      if (e.deltaY > 0) {  //휠을내릴때
+        page++;        //페이지는 올라간다
+      } else if (e.deltaY < 0) { //휠을 올리면
+        page--;             //페이지는 내려간다
+      }
+      if (page < 0) {
+        page = 0;
+      } else if (page > lastPage) {
+        page = lastPage;
+      }
+      console.log(e.deltaY)
+      const scrollToY = page * window.innerHeight;
+      window.scrollTo({ top: scrollToY, behavior: 'smooth' });
+    }, { passive: false }); // 스크롤 기능 제거
+
+    $('.topbtn').click(async function () {
+      $('html, body').animate({scrollTop:0}, 600)
+        return false;
+    })
+
+      $('#iinkinfo1').click(function () {
+        $('html, body').animate({scrollTop:1950}, 600)
+        return false;
+    })
+
+    $('#iinkinfo2').click(function () {
+        $('html, body').animate({scrollTop:2900}, 600)
+        return false;
+    })
+    $('#iinkinfo3').click(function () {
+        $('html, body').animate({scrollTop:950}, 600)
+        return false;
+    })
+    $('#iinkinfo4').click(function () {
+        $('html, body').animate({scrollTop:3850}, 600)
+        return false;
+    })
+    $('#iinkinfo5').click(function () {
+        $('html, body').animate({scrollTop:4850}, 600)
+        return false;
+    })
+    $('#iinkinfo6').click(function () {
+        $('html, body').animate({scrollTop:5800}, 600)
+        return false;
+    })
+  </script>
+</head>
+
+<body class="wrap">
+    <div class="Scrollpage">
+      <img class="project-logo" src="https://raw.githubusercontent.com/j0462/Web/main/image/projectlogo.png"
+        alt="Project Logo" />
+      <div class="content">
+        <div class="circle-container">
+          <div class="circle" >
+              <img  src="https://raw.githubusercontent.com/j0462/Web/main/image/siyoung.png" id="iinkinfo1" alt="Image 1(시영)"
+                width="150" height="150" />
+            </a>
+          </div>
+          <div class="circle-row">
+            <div class="circle">
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/gaeun.png"  id="iinkinfo2" alt="Image 2(가은)"
+                  width="150" height="150" />
+              </a>
+            </div>
+            <div class="circle">
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/logo.png" id="iinkinfo3" alt="Image 3 (팀 로고)"
+                  width="250" height="250" /></a>
+            </div>
+            <div class="circle">
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woojin.png" id="iinkinfo4" alt="Image 4 (우진)"
+                  width="150" height="150" /></a>
+            </div>
+          </div>
+          <div class="circle-row">
+            <div class="circle">
+              
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/wooseok.png" id="iinkinfo5" alt="Image 5 (우석)"
+                  width="150" height="150" />
+              </a>
+            </div>
+            <div class="circle">
+        
+                <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sangheon.png" id="iinkinfo6" alt="Image 6 (상헌)"
+                  width="150" height="150" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div id="team" class="section">
+        <div class="info">
+          <header>
+            <div class="img-container">
+              <img src="https://raw.githubusercontent.com/j0462/Web/main/image/teamlogo.png" width="40%" />
+            </div>
+          </header>
+          <main>
+            <div class="toggle-container">
+              <div>
+                <span><button class="triangle-button"></button>팀명 의미</span>
+                <span><button class="triangle-button"></button>팀 목표</span>
+                <span><button class="triangle-button"></button>팀 특징</span>
+                <span><button class="triangle-button"></button>팀내 약속</span>
+              </div>
+              <div class="infocontent"> SixSense : <br/>
+                5명의 멤버들이 1개의 팀이 되었을 때 6번째 감각이 생긴다.</div>
+              <!-- 내용들 -->
+              <div class="infocontent">프론트 유기하고 백엔드로 도망가기</div>
+              <div class="infocontent">
+                😅 조금 구 시대적인 개발 프로세스 😅 <br/>
+                😮 새로운 작업 방식들 알고 다 같이 놀라기😮</div>
+              <div class="infocontent">
+                ⭐ 식사🍱 거르지 않고 열심히 잘 챙겨먹기!! ⭐ <br/>
+                🌟 하루 3번 인사(진행 상황 공유)하기 🌟 <br/>
+                ⭐ 서로 서로 잘 도와주기! ⭐
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div class="section" id="siyoung">
+        <div class="box">
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg"  alt="" />
+            <button id="comment_btn3" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+          <div class="profile_info">
+            <h1 class="name">이시영</h1>
+            <h3>생년월일 : 1998년 08월 04일</h3>
+            <h3>MBTI : ENFP</h3>
+            <h3>취미 : 게임, 헬스, 사진 찍기, 스냅 촬영</h3>
+            <h3>장점 : 하고자 하는 것이 있으면 끝까지 합니다.</h3>
+            <h3>협업 스타일 : 팀원들 간의 의견 조율을 중요시 합니다.</h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@silica_o3o/posts" target="_blank">velog.io/@silica_o3o/posts</a>
+            </h3>
+            <h3>TMI : 오버워치 전 프로게임팀 코치 출신</h3>
+            <!--이시영 댓글창-->
+
+
+            <div id="commentContinerBox3" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn3"></button></div>
+              <div id="commentBBox3" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/si-young.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
+
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText3" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName3" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail3" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn3" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div class="section" id="gaeun">
+        <div class="box">
+          <div class="profile_info">
+            <h1 class="name">김가은</h1>
+            <h3>생년월일 : 2002년 07월 06일</h3>
+            <h3>MBTI : INFJ</h3>
+            <h3>취미 : 독서, 웹툰, 음악 감상, 홈 프로텍트</h3>
+            <h3>장점 : 책임감이 강함</h3>
+            <h3>협업 스타일 : 버스타는 팀원이 없도록 모두와 함께 합니다~!</h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@litlight/posts" target="_blank">velog.io/@litlight/posts</a>
+            </h3>
+            <h3>TMI : 귀엽고 깜찍한 강아지와 함께 지낸답니다🐶</h3>
+            <!--김가은 댓글창-->
+
+
+            <div id="commentContinerBox2" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn2"></button></div>
+              <div id="commentBBox2" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
+
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText2" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName2" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail2" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn2" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/ga-eun.jpg" alt="" />
+            <button id="comment_btn2" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div class="section" id="woojin">
+        <div class="box">
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png" alt="" />
+            <button id="comment_btn1" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+          <div class="profile_info">
+            <h1 class="name">김우진</h1>
+            <h3>생년월일 : 2000년 06월 05일</h3>
+            <h3>MBTI : ISFP</h3>
+            <h3>취미 : 헬스, 뷰티, 패션 인스타그램</h3>
+            <h3>장점 : 긍정형 인간</h3>
+            <h3>협업 스타일 : 아이디어도 많이 내고 의견수렴도 잘해요!</h3>
+            <h3>
+              블로그 주소 :
+              <a href="kwj-study.tistory.com/posts" target="_blank">kwj-study.tistory.com/posts</a>
+            </h3>
+            <h3>TMI : 패션 인플루언서 활동 중</h3>
+            <!--김우진 댓글창-->
+
+
+            <div id="commentContinerBox" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn1"></button></div>
+              <div id="commentBBox" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-jin.png"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
+
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div class="section" id="wooseok">
+        <div class="box">
+          <div class="profile_info">
+            <h1 class="name">김우석</h1>
+            <h3>생년월일 : 1997년 01월 21일</h3>
+            <h3>MBTI : ESFJ</h3>
+            <h3>취미 : 음악 감상, 영화 시청, 드라이브</h3>
+            <h3>장점 : 맡은 업무에 최선을 다합니다!</h3>
+            <h3>
+              협업 스타일 : 방향이 정해진 일에 묵묵하게 서포트 하면서 나아가려고
+              합니다.
+            </h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@kkx152/posts" target="_blank">velog.io/@kkx152/posts</a>
+            </h3>
+            <h3>TMI : 모터스포츠에 관심이 많은편입니다 😃</h3>
+            <!--김우석 댓글창-->
+
+
+            <div id="commentContinerBox5" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn5"></button></div>
+              <div id="commentBBox5" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
+
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText5" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName5" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail5" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn5" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/woo-seok.jpg" alt="" />
+            <button id="comment_btn5" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Scrollpage">
+      <div class="section" id="sangheon">
+        <div class="box">
+          <div class="profile_pi">
+            <img src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg" alt="" />
+            <button id="comment_btn4" type="button" class="btn btn-outline-primary comment_btn">댓글 보기</button>
+          </div>
+          <div class="profile_info">
+            <h1 class="name">이상헌</h1>
+            <h3>생년월일 : 2001년 01월 01일</h3>
+            <h3>MBTI : ISTP</h3>
+            <h3>취미 : 게임 플레이 및 분석, 유튜브 시청</h3>
+            <h3>장점 : 다양한 관점으로 생각하여 보다 나은 결과를 만들어낸다.</h3>
+            <h3>협업 스타일 : 의지만 있다면 옆에서 도와주는 것을 좋아합니다.</h3>
+            <h3>
+              블로그 주소 :
+              <a href="https://velog.io/@jakehun/posts" target="_blank">velog.io/@jakehun/posts</a>
+            </h3>
+            <h3>TMI : 구글에 게임 출시한 경험 有</h3>
+            <!--이상헌 댓글창-->
+
+
+            <div id="commentContinerBox4" class="commentContinerBox">
+              <div class="closeBtn"><button id="closeBtn4"></button></div>
+              <div id="commentBBox4" class="commentBBox">
+                <div class="imgBox">
+                  <img class="profilePicture" src="https://raw.githubusercontent.com/j0462/Web/main/image/sang-heon.jpg"
+                    alt=""> <!-- 사진별로 댓글 창 만들기. -->
+                </div>
+
+                <div class="commentBox">
+                  <ul class="comment">
+                    <li id="commentText4" class="commentText">
+
+                    </li>
+                  </ul>
+
+                  <div class="commentContainer">
+                    <form class="commentWrap">
+                      <div class="inputBox">
+                        <input id="userName4" class="userName" type="text" placeholder="이름" />
+                        <input id="commentDetail4" class="commentDetail" type="text" placeholder="댓글달기..." />
+                      </div>
+                      <button id="commentBtn4" class="commentBtn" type="button">게시</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span style="font-size: larger; font-weight: bold">Copyright @2024 SixSense. All rights reserved</span><br />
+      <span style="font-size: medium";>소속 : 내일배움캠프 spring 트랙 B6조 </span>
+      <span style="font-size: medium";>팀 멤버 : 이시영, 김가은, 이상헌, 김우진, 김우석 </span>
+      <span style="font-size: medium";>이메일 : SixthSense6@gmail.com </span>
+    </div>
+
+    <button type="button" class="topbtn" id="topbtn">
+      <img src="https://raw.githubusercontent.com/j0462/Web/main/image/topbtn.png" width="70px" height="70px" alt="위로가기">
+    </button>
+</body>
+
+</html>
